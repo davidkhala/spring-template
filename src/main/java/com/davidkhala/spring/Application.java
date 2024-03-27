@@ -25,7 +25,7 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner demo(CustomerRepository repository) {
+    public CommandLineRunner onLoad(CustomerRepository repository) {
         return (args) -> {
             PrintStream console = System.out;
             // save a few customers
