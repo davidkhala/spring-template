@@ -1,13 +1,13 @@
 package com.davidkhala.spring;
 
-import org.springframework.boot.CommandLineRunner;
+import com.davidkhala.spring.aws.S3;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.PrintStream;
+import java.io.IOException;
+
 
 @SpringBootApplication
 @RestController
@@ -20,6 +20,11 @@ public class Application {
     @GetMapping("/ping")
     public String ping() {
         return "pong";
+    }
+
+    @PostMapping("/s3/{bucket}/{name}")
+    public void Upload(S3 s3, @PathVariable String bucket, @PathVariable String name, @RequestParam("file") MultipartFile file) throws IOException {
+        s3.upload(bucket, name, file.getInputStream());
     }
 
 }
