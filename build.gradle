@@ -27,13 +27,16 @@ repositories {
 dependencies {
 //	spring-boot
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    runtimeOnly 'com.h2database:h2'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.solace.spring.boot:solace-spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // java-common
     implementation 'davidkhala:common:0.0.0'
+    // aws
+    implementation platform('io.awspring.cloud:spring-cloud-aws-dependencies:3.1.0')
+    // https://docs.awspring.io/spring-cloud-aws/docs/3.1.0/reference/html/index.html#spring-cloud-aws-s3
+    implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3'
 
 }
 
