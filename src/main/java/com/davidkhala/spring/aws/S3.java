@@ -1,25 +1,32 @@
 package com.davidkhala.spring.aws;
 
+import io.awspring.cloud.s3.S3Resource;
 import io.awspring.cloud.s3.S3Template;
-import org.springframework.stereotype.Repository;
+import java.io.IOException;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
-
-@Repository
+@RestController
 public class S3 {
-    private final S3Template s3Template;
+  @Autowired private S3Template s3Template;
 
-    public S3(S3Template s3Template) {
-        this.s3Template = s3Template;
-    }
+  @PostMapping("/s3/{bucket}/{name}")
+  public void upload(
+      @PathVariable String bucket,
+      @PathVariable String name,
+      @RequestParam("file") MultipartFile file)
+      throws IOException {
+    s3Template.upload(bucket, name, file.getInputStream());
+  }
 
-    public void upload(String BUCKET, String name, InputStream is) {
-
-// uploading file without metadata
-        s3Template.upload(BUCKET, name, is);
-//        No region provided in profile
-
-    }
-
-
+  @GetMapping("/s3/{bucket}")
+  public String list(@PathVariable String bucket) {
+    List<S3Resource> list = s3Template.listObjects(bucket, "");
+    list.forEach(System.out::println);
+    return list.stream()
+        .map(S3Resource::getFilename)
+        .reduce("", (result, s) -> result.isBlank() ? s : result + "," + s);
+  }
 }
