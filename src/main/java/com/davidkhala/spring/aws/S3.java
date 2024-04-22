@@ -27,6 +27,9 @@ public class S3 {
     list.forEach(System.out::println);
     return list.stream()
         .map(S3Resource::getFilename)
-        .reduce("", (result, s) -> result.isBlank() ? s : result + "," + s);
+        .reduce("", (result,s) -> {
+            assert result != null;
+            return result.isBlank() ? s : result + "," + s;
+        });
   }
 }
