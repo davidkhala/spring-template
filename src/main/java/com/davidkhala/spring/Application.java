@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Application {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+  public static void main(String[] args) {
+    System.setProperty("aws.region", "us-east-2"); // TODO
+    SpringApplication.run(Application.class, args);
+  }
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "pong";
-    }
-
+  @GetMapping("/ping")
+  public String ping() {
+    return "pong";
+  }
 }
