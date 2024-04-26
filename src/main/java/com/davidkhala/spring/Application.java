@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 public class Application {
 
   public static void main(String[] args) {
-    System.setProperty("aws.region", "us-east-2"); // TODO
     SpringApplication.run(Application.class, args);
   }
 

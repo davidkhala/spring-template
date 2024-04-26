@@ -29,9 +29,12 @@ public class S3 {
   public String list(@PathVariable String bucket) {
     List<S3Resource> list = s3Template.listObjects(bucket, "");
     list.forEach(System.out::println);
-
     return list.stream()
         .map(S3Resource::getFilename)
         .reduce("", (result, s) -> result.isBlank() ? s : result + "," + s);
+  }
+  @PostMapping("/s3/{bucket}")
+  public String create(@PathVariable String bucket){
+    return s3Template.createBucket(bucket);
   }
 }
