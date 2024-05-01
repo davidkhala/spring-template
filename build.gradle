@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.4'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.4'// required for version-less dependencies
     id 'java-library'
 }
 
@@ -18,7 +18,7 @@ repositories {
         url = uri("https://maven.pkg.github.com/davidkhala/java-common")
         credentials {
             username = 'davidkhala'
-            password = System.getenv("GITHUB_TOKEN")
+            password = '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' // expired on May 01, 2025
         }
     }
 }
@@ -26,25 +26,16 @@ repositories {
 
 dependencies {
 //	spring-boot
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     implementation 'org.springframework.boot:spring-boot-starter-validation' // For @NotNull
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    // solace
-    implementation 'com.solace.spring.boot:solace-spring-boot-starter'
     // java-common
     implementation 'davidkhala:common:0.0.0'
     // aws https://docs.awspring.io/spring-cloud-aws/docs/3.1.0/reference/html/index.html#spring-cloud-aws-s3
     implementation platform('io.awspring.cloud:spring-cloud-aws-dependencies:3.1.0')
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3'
 
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "com.solace.spring.boot:solace-spring-boot-bom:2.0.0"
-    }
 }
 
 tasks.named('test') {
