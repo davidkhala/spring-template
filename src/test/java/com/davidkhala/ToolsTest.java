@@ -1,4 +1,4 @@
-package com.davidkhala.spring;
+package com.davidkhala;
 
 import davidkhala.common.FileTool;
 import org.junit.jupiter.api.Test;
