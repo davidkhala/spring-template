@@ -31,11 +31,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation' // For @NotNull
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // java-common
-    implementation 'davidkhala:common:0.0.0'
+    implementation 'davidkhala:common:0.0.0'// FIXME cannot access 0.0.1
     // aws https://docs.awspring.io/spring-cloud-aws/docs/3.1.0/reference/html/index.html#spring-cloud-aws-s3
-    implementation platform('io.awspring.cloud:spring-cloud-aws-dependencies:3.1.0')
+    implementation platform('io.awspring.cloud:spring-cloud-aws-dependencies:+')
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3'
-
+    implementation "io.minio:minio:+"
 }
 
 tasks.named('test') {
