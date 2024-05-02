@@ -18,7 +18,7 @@ repositories {
         url = uri("https://maven.pkg.github.com/davidkhala/java-common")
         credentials {
             username = 'davidkhala'
-            password = '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' // expired on May 01, 2025
+            password = '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'
         }
     }
 }
@@ -31,7 +31,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation' // For @NotNull
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // java-common
-    implementation 'davidkhala:common:0.0.0'// FIXME cannot access 0.0.1
+    implementation 'davidkhala:common:+'
     // aws https://docs.awspring.io/spring-cloud-aws/docs/3.1.0/reference/html/index.html#spring-cloud-aws-s3
     implementation platform('io.awspring.cloud:spring-cloud-aws-dependencies:+')
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3'
