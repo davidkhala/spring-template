@@ -18,7 +18,7 @@ repositories {
         url = uri("https://maven.pkg.github.com/davidkhala/java-common")
         credentials {
             username = 'davidkhala'
-            password = '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'
+            password = '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'
         }
     }
 }
